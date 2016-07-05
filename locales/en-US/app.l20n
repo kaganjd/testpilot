@@ -103,7 +103,7 @@
 <lastUpdate "Last Update">
 <contribute "Contribute">
 <bugReports "Bug Reports">
-<nowActive "Active">
+<isEnabled "is enabled.">
 <userCount title:"Active Users of this Experiment">
 <tourOnboardingTitle "{{title}} enabled!">
 <tourStartButton "Take the Tour">

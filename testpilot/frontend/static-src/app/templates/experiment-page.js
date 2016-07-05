@@ -9,7 +9,7 @@ export default `
       <div class="details-header-wrapper">
         <div class="details-header content-wrapper">
           <h1 data-hook="title"></h1>
-          <span class="now-active" data-hook="now-active" data-l10n-id="nowActive">Active</span>
+          <span class="is-enabled" data-hook="is-enabled" data-l10n-id="isEnabled">Experiment is enabled.</span>
           <div class="experiment-controls">
             <a data-hook="highlight-privacy" class="highlight-privacy" data-l10n-id=highlightPrivacy>Your privacy</a>
             <a data-l10n-id="giveFeedback" data-hook="feedback" id="feedback-button" class="button default" target="_blank">Give Feedback</a>
