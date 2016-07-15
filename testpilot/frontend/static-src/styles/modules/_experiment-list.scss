@@ -56,8 +56,7 @@
     margin: 0;
   }
 
-
-  &.logged-in {
+  &.has-addon {
     cursor: pointer;
 
     &:hover {
@@ -73,7 +72,8 @@
     }
   }
 
-  &.logged-in:hover {
+  &.has-addon:hover {
+    box-shadow: 0 1px 0 0 $transparent-white-2, 0 0 0 5px $transparent-white-2;
     transition: box-shadow 150ms;
 
     h3 {
@@ -84,39 +84,39 @@
 }
 
 .experiment-actions {
-  :not(.logged-in) {
-    display: none;
+  .has-addon:not(.active) &.show-when-inactive {
+    display: block;
   }
 
   .tab {
+    border-bottom-right-radius: 5px;
+    border-bottom-width: 3px;
+    border-left-width: 0;
+    border-right-color: $white;
+    border-right-width: 3px;
+    border-style: solid;
+    border-top-left-radius: 6px;
+    border-top-width: 0;
+    display: inline-block;
+    font-weight: 300;
+    height: $grid-unit * 1.5;
+    left: -3px;
+    line-height: $grid-unit * 1.5;
+    outline: none;
+    padding: 0 20px;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: -3px;
+    transition: background 150ms;
+    white-space: nowrap;
+    z-index: 99999;
+  }
 
-    .logged-in &.show-when-enabled {
-      background: $bright-green;
-      border-bottom-color: $white;
-      border-bottom-right-radius: 5px;
-      border-bottom-width: 3px;
-      border-left-width: 0;
-      border-right-color: $white;
-      border-right-width: 3px;
-      border-style: solid;
-      border-top-left-radius: 6px;
-      border-top-width: 0;
-      color: $white;
-      display: inline-block;
-      font-weight: 300;
-      height: $grid-unit * 1.5;
-      left: -3px;
-      line-height: $grid-unit * 1.5;
-      outline: none;
-      padding: 0 20px;
-      position: absolute;
-      text-align: center;
-      text-decoration: none;
-      top: -3px;
-      transition: background 150ms;
-      white-space: nowrap;
-      z-index: 99999;
-    }
+  .enabled-tab {
+    background: $bright-green;
+    border-bottom-color: $white;
+    color: $white;
   }
 }
 

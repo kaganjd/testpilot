@@ -5,7 +5,7 @@ import BaseView from './base-view';
 export default BaseView.extend({
   template: `<div data-hook="show-detail" class="experiment-summary">
                 <div class="experiment-actions">
-                  <div data-l10n-id="experimentListEnabledTab" data-hook="enabled-tab" class="tab show-when-enabled"></div>
+                  <div data-l10n-id="experimentListEnabledTab" data-hook="enabled-tab" class="tab enabled-tab"></div>
                 </div>
               <div class="experiment-icon-wrapper" data-hook="bg">
                 <div class="experiment-icon" data-hook="thumbnail"></div>
@@ -20,7 +20,7 @@ export default BaseView.extend({
              </div>`,
 
   props: {
-    loggedIn: {type: 'boolean', default: 'false'}
+    hasAddon: {type: 'boolean', default: 'false'}
   },
 
   bindings: {
@@ -58,29 +58,28 @@ export default BaseView.extend({
       type: 'toggle',
       hook: 'enabled-tab'
     }],
-    'loggedIn': {
+    'hasAddon': {
       type: 'booleanClass',
       hook: 'show-detail',
-      name: 'logged-in'
+      name: 'has-addon'
     }
   },
 
   events: {
-    'click [data-hook=show-detail].logged-in': 'openDetailPage'
+    'click [data-hook=show-detail].has-addon': 'openDetailPage'
   },
 
   initialize(opts) {
-    this.loggedIn = opts.loggedIn;
+    this.hasAddon = !!opts.hasAddon;
   },
 
   openDetailPage(evt) {
     evt.preventDefault();
-      app.sendToGA('event', {
-        eventCategory: 'ExperimentsPage Interactions',
-        eventAction: 'Open detail page',
-        eventLabel: this.model.title
-      });
-    }
+    app.sendToGA('event', {
+      eventCategory: 'ExperimentsPage Interactions',
+      eventAction: 'Open detail page',
+      eventLabel: this.model.title
+    });
     app.router.navigate('experiments/' + this.model.slug);
   }
 });

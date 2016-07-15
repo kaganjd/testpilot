@@ -2,19 +2,8 @@
 
   &:not(.is-enabled) {
     padding-top: $grid-unit * 1.8;
-  }
 
-  .status-bar {
-    &.is-enabled {
-      background: $green;
-      border-bottom: 1px solid $dark-green;
-      color: $white;
-      font-weight: 300;
-      line-height: $line-unit * 2;
-      text-align: center;
-    }
-
-    &:not(.is-enabled) {
+    .enabled {
       display: none;
     }
   }
@@ -32,6 +21,26 @@
     + div {
       margin-top: $grid-unit * 4.8;
     }
+  }
+}
+
+.status-bar {
+  @include flex-container(row, center, center);
+  animation: fade-in 500ms forwards;
+  font-weight: 300;
+  height: $grid-unit * 1.6;
+  margin-bottom: $grid-unit * .2;
+  opacity: 0;
+  padding-top: $grid-unit * .1;
+
+  &.enabled {
+    background: $green;
+    border-bottom: 1px solid $dark-green;
+    color: $white;
+  }
+
+  .stick & {
+    margin-bottom: 0;
   }
 }
 
@@ -64,12 +73,12 @@
   position: relative;
 
   h1 {
-    @include respond-to('not-small') {
+    @include respond-to('big') {
       font-size: $font-unit * 4;
       line-height: $font-unit * 4;
     }
 
-    @include respond-to('small') {
+    @include respond-to('medium') {
       font-size: $font-unit * 3.5;
       line-height: $font-unit * 3.5;
     }

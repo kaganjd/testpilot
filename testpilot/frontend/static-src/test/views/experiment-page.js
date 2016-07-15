@@ -73,10 +73,16 @@ test('indicator bar shows when experiment is enabled', t => {
   const myView = new MyView({headerScroll: false, slug: 'slsk'});
   myView.render();
 
-  t.ok(myView.query('.is-enabled'));
   const model = app.experiments.get('slsk', 'slug');
+
+  model.enabled = true;
+  t.ok(myView.query('.is-enabled'));
+
   model.enabled = false;
-  t.equal(myView.query('.is-enabled').style.display, 'none');
+  // since the display logic is in CSS,
+  // check for the selector pattern that would
+  // show the notification
+  t.equal(myView.query('.is-enabled .enabled'), undefined);
 });
 
 test('introduction appears in view', t => {
